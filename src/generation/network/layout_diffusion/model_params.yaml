@@ -1,0 +1,78 @@
+model:
+  type: layout_diffusion.layout_diffusion_unet.LayoutDiffusionUNetModel
+  parameters:
+    image_size: 256
+    use_fp16: True
+    use_scale_shift_norm: True
+    in_channels: 3
+    out_channels: 6
+    model_channels: 128
+    encoder_channels: 128 # assert same as layout_encoder.hidden_dim
+    num_head_channels: 32
+    num_heads: -1
+    num_heads_upsample: -1
+    num_res_blocks: 2
+    num_attention_blocks: 1
+    resblock_updown: True
+    attention_ds: [ 32, 16, 8 ]
+    channel_mult: [ 1, 1, 2, 2, 4, 4 ]
+    dropout: 0.0
+    use_checkpoint: False
+    use_positional_embedding_for_attention: True
+    attention_block_type: 'ObjectAwareCrossAttention'
+
+    layout_encoder:
+      type: layout_diffusion.layout_encoder.LayoutTransformerEncoder
+      parameters:
+        used_condition_types: [
+          'obj_class', 'obj_bbox', 'is_valid_obj'
+        ]
+        hidden_dim: 128
+        output_dim: 512 # model_channels x 4
+        num_layers: 4
+        num_heads: 8
+        use_final_ln: True
+        use_positional_embedding: False
+        resolution_to_attention: [ 32, 16, 8 ]
+        use_key_padding_mask: False
+
+
+# Large model
+model:
+  type: layout_diffusion.layout_diffusion_unet.LayoutDiffusionUNetModel
+  parameters:
+    image_size: 256
+    use_fp16: True
+    use_scale_shift_norm: True
+    in_channels: 3
+    out_channels: 6
+    model_channels: 256
+    encoder_channels: 256 # assert same as layout_encoder.hidden_dim
+    num_head_channels: 64
+    num_heads: -1
+    num_heads_upsample: -1
+    num_res_blocks: 2
+    num_attention_blocks: 1
+    resblock_updown: True
+    attention_ds: [ 32, 16, 8 ]
+    channel_mult: [ 1, 1, 2, 2, 4, 4 ]
+    dropout: 0.0
+    use_checkpoint: False
+    use_positional_embedding_for_attention: True
+    attention_block_type: 'ObjectAwareCrossAttention'
+
+
+    layout_encoder:
+      type: layout_diffusion.layout_encoder.LayoutTransformerEncoder
+      parameters:
+        used_condition_types: [
+          'obj_class', 'obj_bbox', 'is_valid_obj'
+        ]
+        hidden_dim: 256
+        output_dim: 1024 # model_channels x 4
+        num_layers: 6
+        num_heads: 8
+        use_final_ln: True
+        use_positional_embedding: False
+        resolution_to_attention: [ 32, 16, 8 ]
+        use_key_padding_mask: False
