@@ -1,0 +1,15 @@
+__pycache__/
+.venv/
+data/
+wandb/
+checkpoints/
+.vscode/
+.hidden/
+new_dset/
+*.png
+dsets/
+bboxing/
+.chunks/
+output/
+src/gen_metric/splits
+viz/
