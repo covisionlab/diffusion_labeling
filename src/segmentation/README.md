@@ -1,6 +1,4 @@
-# Synthetic Data Generation
-
-Synthetic data generation through diffusion models.
+# Segmentation module
 
 ## Installation
 
@@ -9,7 +7,7 @@ Synthetic data generation through diffusion models.
 
 ## Usage
 
-` python src/main.py --config configs/hyp/yes_cond_pretr_bedroom.yaml `
+` python train.py --config configs/yourconfig.yaml `
 
 
 ## Wandb
