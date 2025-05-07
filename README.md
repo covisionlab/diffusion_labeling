@@ -3,6 +3,11 @@
 This repository contains the official implementation of the paper:
 ["Bounding Box-Guided Diffusion for Synthesizing Industrial Images and Segmentation Map"](https://arxiv.org/abs/2505.03623) accepted at Synthetic Data for Computer Vision Workshop - CVPR 2025
 
+
+## ⚠️ Repository Under Construction
+This repository is currently under active development. Features, code structure, and documentation are subject to change. Please check back later for a stable release and full instructions.
+
+
 ## 📌 Overview
 
 This project introduces a diffusion-based generative framework guided by bounding boxes to synthesize high-quality industrial images along with corresponding segmentation maps. The method is designed to support precise localization, multi-part control, and mask generation, facilitating dataset creation for downstream tasks like defect detection and segmentation.
