@@ -1,0 +1,65 @@
+main:
+  seed: 1337
+  debug: true
+  fabric_accelerator: gpu
+  fabric_distributed: false
+  n_train_images: 25600000000
+  n_val_images: 16000000000
+  num_workers: 8
+
+hyp:
+  alpha: 0.5
+  batch_size: 64
+  beta: 0.5
+  ce_pos_weight: 0.7
+  epochs: 1000
+  lr: 0.00001
+  scheduler:
+    T_max: 4000
+    eta_min: 0.000001
+    type: cosine
+  threshold: 0.5
+  use_trigger: false
+  wd: 0
+
+model:
+  input_channels: 3
+  load_weights: null
+  name: unet_r18
+
+data:
+  train_df: /mnt/NAS20/quality/paper_benchmarks/wood_defect_detection/syndata4cv_cvpr25/splits/real_20.csv
+  second_train_df: /mnt/NAS20/quality/paper_benchmarks/wood_defect_detection/syndata4cv_cvpr25/splits/layout_20.csv
+  val_df: /mnt/NAS20/quality/paper_benchmarks/wood_defect_detection/syndata4cv_cvpr25/splits/real_10.csv
+
+  augmentation:
+    resize_h: null
+    resize_w: null
+    severity: 1
+
+  classes:
+    - knot
+    - crack
+    - quarzity
+    - resin
+    - marrow
+  retain_class: 2
+
+  original_height: 128
+  original_width: 352
+
+  stats:
+    mu:
+      - 0.682849358341924
+      - 0.582127860882468
+      - 0.3922592927143617
+    std:
+      - 0.258069769627407
+      - 0.21367024957898295
+      - 0.14352231782814462
+
+log:
+  checkpoint_folder: output/checkpoints
+  log_every: 1
+  show_n: 10
+  wandb_project: open_wood_segmentation
