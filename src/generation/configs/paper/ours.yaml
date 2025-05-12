@@ -1,0 +1,123 @@
+###### GENERAL PARAMS ######
+debug: false
+device: "cuda:0"
+
+###### TRAINING PARAMS ######
+seed: 1234
+batch_size: 8
+num_epochs: 300
+lr : 0.00001
+
+###### DATASET PARAMS ######
+split_file: "./data/splits/real_70.csv"
+image_dir: "./data/real/images"
+mask_dir: "./data/real/masks"
+bbox_dir: "./data/real/bbox"
+sdf_dir: "./data/real/sdf_map"
+class_map_dir: "./data/real/class_map"
+n_subset: 80000000000   # use subset of dataset
+image_width: 352        
+image_height: 128       
+num_classes: 6          # number of classes
+
+###### LOGGING + CHECKPOINTING ######
+n_viz_images: 8         # number of images to visualize in log
+log_samples_every: 10   # epochs
+save_model_every: 5     # epochs
+
+###### PIPELINE ######
+pretrained_model: null
+save_dir: "./checkpoints/paper/ours"
+
+train_scheduler_config: >
+  {
+      "_class_name": "DDPMScheduler",
+      "_diffusers_version": "0.31.0",
+      "beta_end": 0.02,
+      "beta_schedule": "linear",
+      "beta_start": 0.0001,
+      "clip_sample": true,
+      "clip_sample_range": 1.0,
+      "dynamic_thresholding_ratio": 0.995,
+      "num_train_timesteps": 1000,
+      "prediction_type": "epsilon",
+      "rescale_betas_zero_snr": false,
+      "sample_max_value": 1.0,
+      "steps_offset": 0,
+      "thresholding": false,
+      "timestep_spacing": "leading",
+      "trained_betas": null,
+      "variance_type": "fixed_small"
+  }
+
+sampling_scheduler_config: >
+  {
+      "_class_name": "DDPMScheduler",
+      "_diffusers_version": "0.31.0",
+      "beta_end": 0.02,
+      "beta_schedule": "linear",
+      "beta_start": 0.0001,
+      "clip_sample": true,
+      "clip_sample_range": 1.0,
+      "dynamic_thresholding_ratio": 0.995,
+      "num_train_timesteps": 1000,
+      "prediction_type": "epsilon",
+      "rescale_betas_zero_snr": false,
+      "sample_max_value": 1.0,
+      "steps_offset": 0,
+      "thresholding": false,
+      "timestep_spacing": "leading",
+      "trained_betas": null,
+      "variance_type": "fixed_small"
+  }
+
+network_config: >
+  {
+      "act_fn": "silu",
+      "add_attention": true,
+      "attention_head_dim": null,
+      "attn_norm_num_groups": null,
+      "block_out_channels": [
+          128,
+          128,
+          256,
+          256,
+          512,
+          512
+      ],
+      "center_input_sample": false,
+      "class_embed_type": null,
+      "down_block_types": [
+          "DownBlock2D",
+          "DownBlock2D",
+          "DownBlock2D",
+          "DownBlock2D",
+          "AttnDownBlock2D",
+          "DownBlock2D"
+      ],
+      "downsample_padding": 0,
+      "downsample_type": "conv",
+      "dropout": 0.0,
+      "flip_sin_to_cos": false,
+      "freq_shift": 1,
+      "in_channels": 10,
+      "layers_per_block": 2,
+      "mid_block_scale_factor": 1,
+      "norm_eps": 1e-06,
+      "norm_num_groups": 32,
+      "num_class_embeds": null,
+      "num_train_timesteps": null,
+      "out_channels": 6,
+      "resnet_time_scale_shift": "default",
+      "sample_size": 256,
+      "time_embedding_type": "positional",
+      "up_block_types": [
+          "UpBlock2D",
+          "AttnUpBlock2D",
+          "UpBlock2D",
+          "UpBlock2D",
+          "UpBlock2D",
+          "UpBlock2D"
+      ],
+      "upsample_type": "conv"
+  }
