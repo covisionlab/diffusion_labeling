@@ -1,10 +1,17 @@
 ## Overview
 
 > Note:
-The default empty bbox is 6 0 0 0 0 this is because of layout diffusion, ask Alessandro Simoni for more information. Also, we use scaling factor 8 and the paddings to have a 256 x 256 images for the diffusion
+The default empty bbox is 6 0 0 0 0 this is because of layout diffusion, ask Alessandro Simoni for more information. Also, we use scaling factor 8 and the paddings to have a 256 x 256 images for the diffusion, since the original images are very.
 
-This script processes images and their corresponding annotations for the paper. 
-This documentation has been generated automatically.
+This script processes images and their corresponding annotations of the Wood dataset which can be found here [https://zenodo.org/records/4694695#.YkWqTX9Bzmg](https://zenodo.org/records/4694695#.YkWqTX9Bzmg).
+
+## How to run
+
+Pay attention to the directory structure before running. Make sure you downloaded the dataset. Then:
+
+```bash
+python preprocess.py
+```
 
 ## Directory Structure
 

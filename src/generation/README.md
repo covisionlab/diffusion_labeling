@@ -2,20 +2,30 @@
 
 Synthetic data generation through diffusion models.
 
-## Installation
 
-` pip install -r requirements.txt `
-
+1. `preprocessing/`: in this folder you create our bbox encodings. Used to train our method.
+2. `scripts/train.sh`: with this you train the diffusion pipelines both ours and layout-diffusion.
+3. `scripts/test.sh`: with this you generate the synthetic wood boards.
 
 ## Usage
 
+1. run `preprocessing/compute_bbox_maps.py` by altering the input files.
+
+2. First, train the diffusion pipeline with:
+
 ```bash 
 sh src/scripts/train.sh
+```
+
+3. Secondly, generate the synthetic examples with
+
+```bash
 sh src/scripts/test.sh
 ```
 
-Use `CUDA_VISIBLE_DEVICES` to select the GPUs you want to train on.
+Make sure you set up the output folder for the `test.sh`. Check in the config files for `save_dir: "./output/ours"` to choose the output folders.
 
+Use `CUDA_VISIBLE_DEVICES` to select the GPUs you want to train on.
 
 ## Wandb
 

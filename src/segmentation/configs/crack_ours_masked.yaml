@@ -28,9 +28,9 @@ model:
   name: unet_r18
 
 data:
-  train_df: /your/path/to/splits/ours_masked_20.csv
+  train_df: .data/splits/ours_masked_20.csv
   second_train_df: null
-  val_df: /your/path/to/splits/real_10.csv
+  val_df: .data/splits/real_10.csv
 
   augmentation:
     resize_h: null
@@ -43,7 +43,7 @@ data:
     - quarzity
     - resin
     - marrow
-  retain_class: 2
+  retain_class: 2  # change here to run with different classes
 
   original_height: 128
   original_width: 352

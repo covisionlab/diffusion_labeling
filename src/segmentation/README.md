@@ -1,9 +1,7 @@
 # Segmentation module
 
-## Installation
 
-` pip install -r requirements.txt `
-
+>**Note:** we included in the configs, ONLY for the crack class. To generate the other metrics, you need to hack into the config files. That is, you should change the row  `retain_class: 2  # change here to run with different classes` which points to the class you want.
 
 ## Usage
 
