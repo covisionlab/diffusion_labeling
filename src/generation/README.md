@@ -14,13 +14,13 @@ Synthetic data generation through diffusion models.
 2. First, train the diffusion pipeline with:
 
 ```bash 
-sh src/scripts/train.sh
+sh scripts/train.sh
 ```
 
 3. Secondly, generate the synthetic examples with
 
 ```bash
-sh src/scripts/test.sh
+sh scripts/test.sh
 ```
 
 Make sure you set up the output folder for the `test.sh`. Check in the config files for `save_dir: "./output/ours"` to choose the output folders.
