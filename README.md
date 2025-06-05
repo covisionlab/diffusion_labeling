@@ -3,6 +3,9 @@
 This repository contains the official implementation of the paper:
 ["Bounding Box-Guided Diffusion for Synthesizing Industrial Images and Segmentation Map"](https://arxiv.org/abs/2505.03623) accepted at Synthetic Data for Computer Vision Workshop - CVPR 2025
 
+<p align="center">
+  <img src="imgs/model.png" alt="Diffusion Labeling"/>
+</p> 
 
 ## 📌 Overview
 
